@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import StorySection from "@/components/StorySection";
 import EcosystemSection from "@/components/EcosystemSection";
+import LivestockSection from "@/components/LivestockSection";
 import SustainabilitySection from "@/components/SustainabilitySection";
 import ImpactSection from "@/components/ImpactSection";
 import GallerySection from "@/components/GallerySection";
