@@ -52,9 +52,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         glass: {
-          DEFAULT: "hsl(var(--glass))",
-          border: "hsl(var(--glass-border))",
-          hover: "hsl(var(--glass-hover))",
+          DEFAULT: "hsl(var(--glass) / 0.03)",
+          border: "hsl(var(--glass-border) / 0.08)",
+          hover: "hsl(var(--glass-hover) / 0.06)",
         },
         soil: "hsl(var(--soil))",
         "warm-sand": "hsl(var(--warm-sand))",
