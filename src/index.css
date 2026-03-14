@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+/* Font loaded via index.html */
 
 @tailwind base;
 @tailwind components;
@@ -30,20 +30,23 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 100% / 0.08;
-    --input: 0 0% 100% / 0.08;
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
     --ring: 142 76% 36%;
 
     --radius: 0.75rem;
 
     /* Custom Kigutu tokens */
-    --glass: 0 0% 100% / 0.03;
-    --glass-border: 0 0% 100% / 0.08;
-    --glass-hover: 0 0% 100% / 0.06;
+    --glass: 0 0% 100%;
+    --glass-opacity: 0.03;
+    --glass-border: 0 0% 100%;
+    --glass-border-opacity: 0.08;
+    --glass-hover: 0 0% 100%;
+    --glass-hover-opacity: 0.06;
     --soil: 25 30% 15%;
     --warm-sand: 40 20% 98%;
-    --emerald-glow: 142 76% 36% / 0.3;
-    --gold-glow: 45 93% 47% / 0.3;
+    --emerald-glow: 142 76% 36%;
+    --gold-glow: 45 93% 47%;
 
     --easing: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -53,7 +56,7 @@
     --sidebar-primary-foreground: 150 15% 4%;
     --sidebar-accent: 150 10% 12%;
     --sidebar-accent-foreground: 40 20% 92%;
-    --sidebar-border: 0 0% 100% / 0.08;
+    --sidebar-border: 220 13% 20%;
     --sidebar-ring: 142 76% 36%;
   }
 }
@@ -75,7 +78,9 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-glass backdrop-blur-xl border border-glass-border;
+    background: hsla(0, 0%, 100%, 0.03);
+    backdrop-filter: blur(24px);
+    border: 1px solid hsla(0, 0%, 100%, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   }
 
