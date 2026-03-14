@@ -16,6 +16,7 @@ const Index = () => {
       <HeroSection />
       <StorySection />
       <EcosystemSection />
+      <LivestockSection />
       <SustainabilitySection />
       <ImpactSection />
       <GallerySection />
