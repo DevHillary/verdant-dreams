@@ -1,42 +1,76 @@
-import { useRef, useMemo, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
-import * as THREE from "three";
+import { useRef, useMemo, Suspense, Component, ReactNode } from "react";
 import { motion, useInView } from "framer-motion";
 
-function ParticleField() {
-  const ref = useRef<THREE.Points>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
+// Error boundary to prevent Three.js from crashing the page
+class CanvasErrorBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() { return this.state.hasError ? this.props.fallback : this.props.children; }
+}
 
-  const positions = useMemo(() => {
-    const pos = new Float32Array(2000 * 3);
-    for (let i = 0; i < 2000; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 8;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 8;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
-    }
-    return pos;
-  }, []);
+// Lazy load Three.js components
+function ParticleCanvas() {
+  const { Canvas } = require("@react-three/fiber");
+  const { Points, PointMaterial } = require("@react-three/drei");
+  const THREE = require("three");
+  const { useFrame } = require("@react-three/fiber");
 
-  useFrame(({ clock, pointer }) => {
-    if (!ref.current) return;
-    mouseRef.current.x += (pointer.x * 0.3 - mouseRef.current.x) * 0.05;
-    mouseRef.current.y += (pointer.y * 0.3 - mouseRef.current.y) * 0.05;
-    ref.current.rotation.x = clock.getElapsedTime() * 0.05 + mouseRef.current.y;
-    ref.current.rotation.y = clock.getElapsedTime() * 0.08 + mouseRef.current.x;
-  });
+  function ParticleField() {
+    const ref = useRef<any>(null);
+    const mouseRef = useRef({ x: 0, y: 0 });
+
+    const positions = useMemo(() => {
+      const pos = new Float32Array(2000 * 3);
+      for (let i = 0; i < 2000; i++) {
+        pos[i * 3] = (Math.random() - 0.5) * 8;
+        pos[i * 3 + 1] = (Math.random() - 0.5) * 8;
+        pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
+      }
+      return pos;
+    }, []);
+
+    useFrame(({ clock, pointer }: any) => {
+      if (!ref.current) return;
+      mouseRef.current.x += (pointer.x * 0.3 - mouseRef.current.x) * 0.05;
+      mouseRef.current.y += (pointer.y * 0.3 - mouseRef.current.y) * 0.05;
+      ref.current.rotation.x = clock.getElapsedTime() * 0.05 + mouseRef.current.y;
+      ref.current.rotation.y = clock.getElapsedTime() * 0.08 + mouseRef.current.x;
+    });
+
+    return (
+      <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
+        <PointMaterial transparent color="#22c55e" size={0.02} sizeAttenuation depthWrite={false} opacity={0.6} />
+      </Points>
+    );
+  }
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
-      <PointMaterial
-        transparent
-        color="#22c55e"
-        size={0.02}
-        sizeAttenuation
-        depthWrite={false}
-        opacity={0.6}
-      />
-    </Points>
+    <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 2]}>
+      <ambientLight intensity={0.5} />
+      <ParticleField />
+    </Canvas>
+  );
+}
+
+// Simple fallback with CSS particles
+function ParticleFallback() {
+  return (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="relative w-48 h-48">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full bg-primary/40 animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 4}s`,
+              animationDuration: `${4 + Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -56,13 +90,12 @@ const EcosystemSection = () => {
             className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden"
             style={{ background: "radial-gradient(ellipse at center, hsla(142,76%,36%,0.08) 0%, transparent 70%)" }}
           >
-            <Suspense fallback={null}>
-              <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 2]}>
-                <ambientLight intensity={0.5} />
-                <ParticleField />
-              </Canvas>
-            </Suspense>
-            <div className="absolute inset-0 pointer-events-none border border-glass-border rounded-3xl" />
+            <CanvasErrorBoundary fallback={<ParticleFallback />}>
+              <Suspense fallback={<ParticleFallback />}>
+                <ParticleCanvas />
+              </Suspense>
+            </CanvasErrorBoundary>
+            <div className="absolute inset-0 pointer-events-none rounded-3xl" style={{ border: "1px solid hsla(0,0%,100%,0.08)" }} />
           </motion.div>
 
           {/* Text */}
@@ -89,7 +122,7 @@ const EcosystemSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-muted-foreground leading-relaxed mb-8"
             >
-              Every particle in our visualization represents a living component of the Kigutu
+              Every particle represents a living component of the Kigutu
               ecosystem — from mycorrhizal networks in the soil to pollinator pathways above the
               canopy. Move your mouse to feel the wind that shapes our landscape.
             </motion.p>
