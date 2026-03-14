@@ -37,13 +37,16 @@
     --radius: 0.75rem;
 
     /* Custom Kigutu tokens */
-    --glass: 0 0% 100% / 0.03;
-    --glass-border: 0 0% 100% / 0.08;
-    --glass-hover: 0 0% 100% / 0.06;
+    --glass: 0 0% 100%;
+    --glass-opacity: 0.03;
+    --glass-border: 0 0% 100%;
+    --glass-border-opacity: 0.08;
+    --glass-hover: 0 0% 100%;
+    --glass-hover-opacity: 0.06;
     --soil: 25 30% 15%;
     --warm-sand: 40 20% 98%;
-    --emerald-glow: 142 76% 36% / 0.3;
-    --gold-glow: 45 93% 47% / 0.3;
+    --emerald-glow: 142 76% 36%;
+    --gold-glow: 45 93% 47%;
 
     --easing: cubic-bezier(0.22, 1, 0.36, 1);
 
