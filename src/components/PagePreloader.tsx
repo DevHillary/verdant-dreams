@@ -11,7 +11,7 @@ const PagePreloader = ({ onComplete }: PagePreloaderProps) => {
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const duration = prefersReducedMotion ? 1000 : 2400;
+    const duration = prefersReducedMotion ? 3000 : 5000;
     const timer = window.setTimeout(() => {
       setIsVisible(false);
       window.setTimeout(onComplete, 450);
