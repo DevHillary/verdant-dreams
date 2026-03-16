@@ -21,19 +21,20 @@ const EcosystemSection = () => {
             initial={{ opacity: 0, scale: 0.94, rotate: -2 }}
             animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden glass-card !p-0"
+            className="relative flex h-[420px] items-center justify-center overflow-hidden rounded-3xl glass-card md:h-[520px]"
           >
             <div className="map-glow absolute inset-0" />
+            <div className="absolute inset-0 z-10 bg-background/20" />
             <motion.img
               src={farmMap}
               alt="Illustrated map of Kigutu Farm showing the gardens and growing zones"
-              className="farm-map-image relative z-10 h-full w-full object-cover object-center"
+              className="farm-map-image relative z-20 h-full w-full object-contain object-center p-3 md:p-5"
               loading="lazy"
-              animate={isInView ? { scale: [1, 1.03, 1], x: [0, 8, -6, 0], y: [0, -6, 4, 0] } : {}}
+              animate={isInView ? { scale: [1, 1.015, 1], x: [0, 4, -3, 0], y: [0, -3, 2, 0] } : {}}
               transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
             />
-            <div className="absolute inset-0 z-20 bg-gradient-to-t from-background/60 via-transparent to-background/10" />
-            <div className="map-grid absolute inset-0 z-20 opacity-70" />
+            <div className="absolute inset-0 z-30 bg-gradient-to-t from-background/35 via-transparent to-background/5" />
+            <div className="map-grid absolute inset-0 z-30 opacity-40" />
             <div className="absolute left-5 top-5 z-30 glass-card !rounded-2xl !px-4 !py-3">
               <p className="text-label text-primary">Farm Map</p>
               <p className="text-sm text-foreground">Living gardens across Kigutu</p>
