@@ -162,6 +162,77 @@
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(45, 93%, 47%), hsl(45, 93%, 67%));
   }
+
+  .map-point {
+    @apply h-2.5 w-2.5 rounded-full;
+    box-shadow: 0 0 0 6px hsl(var(--primary) / 0.08);
+  }
+
+  .map-point-primary {
+    background: hsl(var(--primary));
+  }
+
+  .map-point-accent {
+    background: hsl(var(--accent));
+    box-shadow: 0 0 0 6px hsl(var(--accent) / 0.08);
+  }
+}
+
+.preloader-aura {
+  background:
+    radial-gradient(circle at 50% 40%, hsl(var(--primary) / 0.22), transparent 30%),
+    radial-gradient(circle at 70% 30%, hsl(var(--accent) / 0.14), transparent 24%),
+    linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+}
+
+.preloader-dot {
+  animation: preloader-bounce 0.9s var(--easing) infinite;
+}
+
+.map-glow {
+  background:
+    radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.18), transparent 25%),
+    radial-gradient(circle at 80% 75%, hsl(var(--accent) / 0.18), transparent 22%);
+}
+
+.map-grid {
+  background-image:
+    linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mix-blend-mode: screen;
+}
+
+.farm-map-image {
+  animation: map-drift 16s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes preloader-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+@keyframes map-drift {
+  0%, 100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.035) translate3d(0, -8px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-dot,
+  .farm-map-image {
+    animation: none;
+  }
 }
 
 /* Smooth scrolling */
