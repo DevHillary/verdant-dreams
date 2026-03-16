@@ -1,34 +1,13 @@
-import { useRef, lazy, Suspense, Component, ReactNode } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import farmMap from "@/assets/farm-map.jpg";
 
-const ParticleCanvas = lazy(() => import("@/components/ParticleCanvas"));
-
-class CanvasErrorBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { hasError: boolean }> {
-  state = { hasError: false };
-  static getDerivedStateFromError() { return { hasError: true }; }
-  render() { return this.state.hasError ? this.props.fallback : this.props.children; }
-}
-
-function ParticleFallback() {
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="relative w-48 h-48">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1.5 h-1.5 rounded-full bg-primary/40 animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 4}s`,
-              animationDuration: `${4 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
+const ecosystemPoints = [
+  "Pineapples & Coffee Plantation",
+  "Food Forest & Kitchen Garden",
+  "Rice, Cassava & Maize Blocks",
+  "Nursery Site & Fodder Zones",
+];
 
 const EcosystemSection = () => {
   const ref = useRef(null);
@@ -39,18 +18,33 @@ const EcosystemSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1.2 }}
-            className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden"
-            style={{ background: "radial-gradient(ellipse at center, hsla(142,76%,36%,0.08) 0%, transparent 70%)" }}
+            initial={{ opacity: 0, scale: 0.94, rotate: -2 }}
+            animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden glass-card !p-0"
           >
-            <CanvasErrorBoundary fallback={<ParticleFallback />}>
-              <Suspense fallback={<ParticleFallback />}>
-                <ParticleCanvas />
-              </Suspense>
-            </CanvasErrorBoundary>
-            <div className="absolute inset-0 pointer-events-none rounded-3xl" style={{ border: "1px solid hsla(0,0%,100%,0.08)" }} />
+            <div className="map-glow absolute inset-0" />
+            <motion.img
+              src={farmMap}
+              alt="Illustrated map of Kigutu Farm showing the gardens and growing zones"
+              className="farm-map-image relative z-10 h-full w-full object-cover object-center"
+              loading="lazy"
+              animate={isInView ? { scale: [1, 1.03, 1], x: [0, 8, -6, 0], y: [0, -6, 4, 0] } : {}}
+              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <div className="absolute inset-0 z-20 bg-gradient-to-t from-background/60 via-transparent to-background/10" />
+            <div className="map-grid absolute inset-0 z-20 opacity-70" />
+            <div className="absolute left-5 top-5 z-30 glass-card !rounded-2xl !px-4 !py-3">
+              <p className="text-label text-primary">Farm Map</p>
+              <p className="text-sm text-foreground">Living gardens across Kigutu</p>
+            </div>
+            <motion.div
+              animate={isInView ? { opacity: [0.25, 0.7, 0.25] } : {}}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-6 right-6 z-30 rounded-full border border-primary/30 bg-background/60 px-4 py-2 backdrop-blur-md"
+            >
+              <span className="text-label text-foreground">Growing zones</span>
+            </motion.div>
           </motion.div>
 
           <div>
@@ -60,7 +54,7 @@ const EcosystemSection = () => {
               transition={{ duration: 0.6 }}
               className="text-label text-primary mb-4"
             >
-              Living Ecosystem
+              Farm Map
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 40 }}
@@ -68,7 +62,7 @@ const EcosystemSection = () => {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
               className="text-display text-foreground text-4xl md:text-5xl mb-8"
             >
-              A symphony of <span className="text-gradient-primary">soil, sun & seed</span>
+              A living map of <span className="text-gradient-primary">Kigutu’s gardens</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -76,9 +70,8 @@ const EcosystemSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-muted-foreground leading-relaxed mb-8"
             >
-              Every particle represents a living component of the Kigutu
-              ecosystem — from mycorrhizal networks in the soil to pollinator pathways above the
-              canopy. Move your mouse to feel the wind that shapes our landscape.
+              This animated map reveals how Kigutu Farm is organized across its productive landscape —
+              connecting food forest, nursery, staple crop plots, and specialty gardens into one regenerative system.
             </motion.p>
 
             <motion.div
@@ -87,14 +80,9 @@ const EcosystemSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-4"
             >
-              {["Crops & Vegetation", "Soil Microbiome", "Water Systems", "Pollinator Networks"].map((item, i) => (
+              {ecosystemPoints.map((item, i) => (
                 <div key={item} className="flex items-center gap-3">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{
-                      background: i % 2 === 0 ? "hsl(142, 76%, 36%)" : "hsl(45, 93%, 47%)",
-                    }}
-                  />
+                  <div className={i % 2 === 0 ? "map-point map-point-primary" : "map-point map-point-accent"} />
                   <span className="text-sm text-foreground">{item}</span>
                 </div>
               ))}
