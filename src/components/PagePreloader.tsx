@@ -1,5 +1,6 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
+import preloaderFarmBg from "@/assets/preloader-farm-bg.jpg";
 
 interface PagePreloaderProps {
   onComplete: () => void;
@@ -28,7 +29,16 @@ const PagePreloader = ({ onComplete }: PagePreloaderProps) => {
           className="fixed inset-0 z-[120] flex items-center justify-center overflow-hidden bg-background"
           aria-label="Loading Kigutu Farm"
         >
+          <motion.div
+            initial={prefersReducedMotion ? { scale: 1, x: 0, y: 0 } : { scale: 1.04, x: -12, y: 12 }}
+            animate={prefersReducedMotion ? { scale: 1, x: 0, y: 0 } : { scale: 1.14, x: 10, y: -10 }}
+            transition={prefersReducedMotion ? undefined : { duration: 3.4, ease: "easeInOut" }}
+            className="preloader-media absolute inset-0"
+            style={{ backgroundImage: `url(${preloaderFarmBg})` }}
+          />
           <div className="preloader-aura absolute inset-0" />
+          <div className="preloader-grain absolute inset-0" />
+
           <motion.div
             initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.94, y: 18 }}
             animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
@@ -44,7 +54,7 @@ const PagePreloader = ({ onComplete }: PagePreloaderProps) => {
               Kigutu Farm
             </motion.p>
 
-            <h1 className="text-display text-foreground text-4xl md:text-6xl leading-none">
+            <h1 className="text-display text-foreground text-4xl leading-none md:text-6xl">
               <motion.span
                 initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
