@@ -1,17 +1,17 @@
-import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection";
-import StorySection from "@/components/StorySection";
-import EcosystemSection from "@/components/EcosystemSection";
-import LivestockSection from "@/components/LivestockSection";
-import SustainabilitySection from "@/components/SustainabilitySection";
-import ImpactSection from "@/components/ImpactSection";
-import GallerySection from "@/components/GallerySection";
 import CTASection from "@/components/CTASection";
+import EcosystemSection from "@/components/EcosystemSection";
 import FooterSection from "@/components/FooterSection";
+import GallerySection from "@/components/GallerySection";
+import HeroSection from "@/components/HeroSection";
+import ImpactSection from "@/components/ImpactSection";
+import LivestockSection from "@/components/LivestockSection";
+import Navigation from "@/components/Navigation";
+import StorySection from "@/components/StorySection";
+import SustainabilitySection from "@/components/SustainabilitySection";
 
 const Index = () => {
   return (
-    <main className="bg-background min-h-screen overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden bg-background">
       <Navigation />
       <HeroSection />
       <StorySection />
