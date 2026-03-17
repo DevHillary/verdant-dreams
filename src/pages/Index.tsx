@@ -1,7 +1,11 @@
 import CTASection from "@/components/CTASection";
+<<<<<<< HEAD
 import CommunityProvisionSection from "@/components/CommunityProvisionSection";
 import EcosystemSection from "@/components/EcosystemSection";
 import FishingSection from "@/components/FishingSection";
+=======
+import EcosystemSection from "@/components/EcosystemSection";
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
 import FooterSection from "@/components/FooterSection";
 import GallerySection from "@/components/GallerySection";
 import HeroSection from "@/components/HeroSection";
@@ -19,9 +23,13 @@ const Index = () => {
       <StorySection />
       <EcosystemSection />
       <LivestockSection />
+<<<<<<< HEAD
       <FishingSection />
       <SustainabilitySection />
       <CommunityProvisionSection />
+=======
+      <SustainabilitySection />
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
       <ImpactSection />
       <GallerySection />
       <CTASection />

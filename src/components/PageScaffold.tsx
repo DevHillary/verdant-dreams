@@ -18,7 +18,7 @@ const PageScaffold = ({ eyebrow, title, description, image, children }: PageScaf
 
       <section className="relative overflow-hidden px-6 pb-16 pt-28 md:px-16 md:pb-24 md:pt-36">
         <div className="absolute inset-0">
-          <img src={image} alt="" className="h-full w-full object-cover" loading="eager" />
+          <img src={image} alt="" className="h-full w-full object-cover" loading="eager" decoding="async" sizes="100vw" />
           <div className="atmospheric-overlay absolute inset-0" />
           <div className="fog-overlay absolute inset-0" />
         </div>

@@ -1,13 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import storyImage from "@/assets/onions.jpg";
+import storyImage from "@/assets/story-planting.jpg";
 
 const StorySection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="story" ref={ref} className="relative py-16 md:py-24 px-6 md:px-16">
+    <section id="story" ref={ref} className="relative py-32 md:py-48 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Text */}
@@ -40,7 +40,7 @@ const StorySection = () => {
                 the soil, feeds families, and builds resilience against climate change.
               </p>
               <p>
-                As the largest provider of food essentials to nearby schools and hospitals, our work extends beyond farming. We train the next generation of agricultural leaders,
+                Our work extends beyond farming. We train the next generation of agricultural leaders,
                 preserve indigenous seed varieties, and demonstrate that sustainable food systems
                 can thrive in East Africa.
               </p>
@@ -76,10 +76,12 @@ const StorySection = () => {
                 alt="Hands planting seedlings in rich Burundian soil"
                 className="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
+                decoding="async"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 glass-card !p-6 !rounded-2xl">
-              <p className="text-label text-primary mb-1">Our Pride</p>
+              <p className="text-label text-primary mb-1">Est. 2008</p>
               <p className="text-sm text-foreground">Kigutu, Burundi</p>
             </div>
           </motion.div>

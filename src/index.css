@@ -244,6 +244,7 @@
   }
 }
 
+<<<<<<< HEAD
 /* Farm Preloader Animations */
 .cloud {
   position: absolute;
@@ -749,6 +750,11 @@
   .tractor,
   .tractor-exhaust,
   .bird {
+=======
+@media (prefers-reduced-motion: reduce) {
+  .preloader-dot,
+  .farm-map-image {
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
     animation: none;
   }
 }

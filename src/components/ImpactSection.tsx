@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import communityImage from "@/assets/theland.jpg";
+import communityImage from "@/assets/community.jpg";
 
 const stats = [
   { value: 2400, suffix: "+", label: "Farmers Trained" },
@@ -70,6 +70,8 @@ const ImpactSection = () => {
               alt="Kigutu community farmers harvesting crops together"
               className="h-[500px] w-full object-cover transition-transform duration-700 hover:scale-105"
               loading="lazy"
+              decoding="async"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </motion.div>
 
@@ -96,7 +98,7 @@ const ImpactSection = () => {
               transition={{ duration: 0.75, delay: 0.18 }}
               className="mb-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
             >
-              As the largest provider of food essentials to nearby schools and hospitals, Kigutu Farm connects production, training, and restoration so that harvests create value far beyond the field. The impact is measured not only in outputs,
+              Kigutu Farm connects production, training, and restoration so that harvests create value far beyond the field. The impact is measured not only in outputs,
               but in stronger households, better growing knowledge, and a healthier local food system.
             </motion.p>
 

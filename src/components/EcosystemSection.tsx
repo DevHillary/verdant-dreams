@@ -14,7 +14,11 @@ const EcosystemSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
+<<<<<<< HEAD
     <section id="ecosystem" ref={ref} className="relative py-16 md:py-24 px-6 md:px-16 overflow-hidden">
+=======
+    <section id="ecosystem" ref={ref} className="relative py-32 md:py-48 px-6 md:px-16 overflow-hidden">
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div

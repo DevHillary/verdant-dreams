@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import inyamboCattle from "@/assets/enhanced-IMG-20260314-WA0031.jpg";
+import inyamboCattle from "@/assets/inyambo-cattle.jpg";
 
 const highlights = [
   { title: "Inyambo Heritage", desc: "The sacred 'Cattle of Kings' — a living symbol of Burundian royal tradition, prized for their majestic long horns and gentle temperament." },
@@ -13,7 +13,7 @@ const LivestockSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="livestock" ref={ref} className="relative py-16 md:py-24 px-6 md:px-16 overflow-hidden">
+    <section id="livestock" ref={ref} className="relative py-32 md:py-48 px-6 md:px-16 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           {/* Image */}
@@ -28,6 +28,8 @@ const LivestockSection = () => {
               alt="Majestic Inyambo cattle on Kigutu Farm hillside"
               className="w-full h-[400px] md:h-[540px] object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
+              decoding="async"
+              sizes="(max-width: 768px) 100vw, 60vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">

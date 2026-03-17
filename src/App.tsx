@@ -2,7 +2,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PagePreloader from "@/components/PagePreloader";
+<<<<<<< HEAD
 import ScrollToTop from "@/components/ScrollToTop";
+=======
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,7 +31,11 @@ const AppContent = () => {
   return (
     <>
       {isLoading && <PagePreloader onComplete={() => setIsLoading(false)} />}
+<<<<<<< HEAD
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+=======
+      <BrowserRouter>
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ecosystem" element={<EcosystemPage />} />
@@ -40,7 +47,10 @@ const AppContent = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+<<<<<<< HEAD
       <ScrollToTop />
+=======
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
     </>
   );
 };

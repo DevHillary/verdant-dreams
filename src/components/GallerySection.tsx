@@ -1,4 +1,5 @@
 import { motion, useInView } from "framer-motion";
+<<<<<<< HEAD
 import { useRef, useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import heroFarm from "@/assets/hero-farm.jpg";
@@ -11,6 +12,16 @@ import leafy2 from "@/assets/leafy2.jpg";
 import leafy3 from "@/assets/leafy3.jpg";
 import hearbs from "@/assets/herbs.jpg";
 import sorgum from "@/assets/sorgum.jpg";
+=======
+import { useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import heroFarm from "@/assets/hero-farm.jpg";
+import farmLandscape from "@/assets/farm-landscape.jpg";
+import community from "@/assets/community.jpg";
+import galleryCoffee from "@/assets/gallery-coffee.jpg";
+import gallerySeedlings from "@/assets/gallery-seedlings.jpg";
+import sustainability from "@/assets/sustainability.jpg";
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
 
 const images = [
   { src: heroFarm, alt: "Kigutu farmland at golden hour", span: "md:col-span-2 md:row-span-2" },
@@ -19,16 +30,20 @@ const images = [
   { src: farmLandscape, alt: "Terraced farmland aerial view", span: "md:col-span-2" },
   { src: community, alt: "Community harvest celebration", span: "" },
   { src: sustainability, alt: "Biodiversity close-up with morning dew", span: "" },
+<<<<<<< HEAD
   { src: leafy2, alt: "Biodiversity close-up with morning dew", span: "" },
   { src: leafy3, alt: "Biodiversity close-up with morning dew", span: "" },
   { src: hearbs, alt: "Biodiversity close-up with morning dew", span: "" },
   { src: sorgum, alt: "Biodiversity close-up with morning dew", span: "" },
+=======
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
 ];
 
 const GallerySection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selected, setSelected] = useState<number | null>(null);
+<<<<<<< HEAD
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-slide functionality
@@ -60,6 +75,11 @@ const GallerySection = () => {
 
   return (
     <section id="gallery" ref={ref} className="relative py-16 md:py-24 px-6 md:px-16">
+=======
+
+  return (
+    <section id="gallery" ref={ref} className="relative py-32 md:py-48 px-6 md:px-16">
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
       <div className="max-w-7xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
@@ -72,6 +92,7 @@ const GallerySection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+<<<<<<< HEAD
           className="text-display text-foreground text-4xl md:text-5xl mb-8 text-center"
         >
           Moments from <span className="text-gradient-primary">the field</span>
@@ -177,6 +198,32 @@ const GallerySection = () => {
               />
             ))}
           </div>
+=======
+          className="text-display text-foreground text-4xl md:text-5xl mb-16 text-center"
+        >
+          Moments from <span className="text-gradient-primary">the field</span>
+        </motion.h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[220px]">
+          {images.map((img, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.08 }}
+              className={`relative rounded-2xl overflow-hidden cursor-pointer group ${img.span}`}
+              onClick={() => setSelected(i)}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 border border-glass-border rounded-2xl pointer-events-none" />
+            </motion.div>
+          ))}
+>>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
         </div>
       </div>
 

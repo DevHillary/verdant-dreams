@@ -1,5 +1,4 @@
 import ctaLandscape from "@/assets/cta-landscape.jpg";
-import BookSection from "@/components/BookSection";
 import CTASection from "@/components/CTASection";
 import PageScaffold from "@/components/PageScaffold";
 
@@ -11,7 +10,6 @@ const ContactPage = () => {
       description="Connect with the farm about visits, partnerships, learning programs, or support for regenerative agriculture in Burundi."
       image={ctaLandscape}
     >
-      <BookSection />
       <CTASection />
     </PageScaffold>
   );

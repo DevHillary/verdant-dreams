@@ -1,12 +1,12 @@
-import farmLandscape from "@/assets/theland.jpg";
-import farmMap from "@/assets/theland.jpg";
-import galleryCoffee from "@/assets/fruits.png";
-import gallerySeedlings from "@/assets/cabbages.jpg";
+import farmLandscape from "@/assets/farm-landscape.jpg";
+import farmMap from "@/assets/farm-map.jpg";
+import galleryCoffee from "@/assets/gallery-coffee.jpg";
+import gallerySeedlings from "@/assets/gallery-seedlings.jpg";
 import heroFarm from "@/assets/hero-farm.jpg";
-import cabbage2 from "@/assets/cabbage2.jpg";
-import storyPlanting from "@/assets/legumes.jpg";
-import herbs from "@/assets/herbs.jpg";
+import storyPlanting from "@/assets/story-planting.jpg";
 import sustainability from "@/assets/sustainability.jpg";
+import herbs from "@/assets/herbs.jpg";
+import cabbage2 from "@/assets/cabbage2.jpg";
 
 export type PlantingCategory = {
   id: string;
