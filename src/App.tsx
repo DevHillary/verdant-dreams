@@ -1,12 +1,18 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PagePreloader from "@/components/PagePreloader";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import PagePreloader from "@/components/PagePreloader";
+import ContactPage from "./pages/ContactPage.tsx";
+import EcosystemPage from "./pages/EcosystemPage.tsx";
 import Index from "./pages/Index.tsx";
+import GalleryPage from "./pages/GalleryPage.tsx";
+import ImpactPage from "./pages/ImpactPage.tsx";
+import LivestockPage from "./pages/LivestockPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import SustainabilityPage from "./pages/SustainabilityPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +30,12 @@ const AppContent = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/ecosystem" element={<EcosystemPage />} />
+          <Route path="/livestock" element={<LivestockPage />} />
+          <Route path="/sustainability" element={<SustainabilityPage />} />
+          <Route path="/impact" element={<ImpactPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
