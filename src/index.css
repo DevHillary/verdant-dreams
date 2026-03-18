@@ -749,12 +749,9 @@
   .plant-leafs,
   .tractor,
   .tractor-exhaust,
-  .bird {
-=======
-@media (prefers-reduced-motion: reduce) {
+  .bird,
   .preloader-dot,
   .farm-map-image {
->>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
     animation: none;
   }
 }
