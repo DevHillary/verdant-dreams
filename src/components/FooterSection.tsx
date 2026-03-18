@@ -1,7 +1,8 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { siteNavigation } from "@/lib/site-navigation";
 
-const FooterSection = () => {
+const FooterSection = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer className="px-6 pb-6 pt-4 md:px-16 md:pb-10">
       <div className="mx-auto max-w-7xl rounded-[1.75rem] border border-glass-border bg-glass px-6 py-8 backdrop-blur-xl md:px-8 md:py-9">
