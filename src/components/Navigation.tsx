@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-<<<<<<< HEAD
 import { createPortal } from "react-dom";
-=======
->>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
 import { siteNavigation } from "@/lib/site-navigation";
 
 const Navigation = () => {
@@ -27,11 +24,7 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-<<<<<<< HEAD
       className={`fixed left-0 right-0 top-0 z-40 h-16 transition-all duration-500 ${
-=======
-      className={`fixed left-0 right-0 top-0 z-50 h-16 transition-all duration-500 ${
->>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
         scrolled ? "glass-nav" : "bg-transparent"
       }`}
     >
@@ -43,7 +36,6 @@ const Navigation = () => {
         <div className="hidden items-center gap-8 md:flex">
           {siteNavigation.map((link) => {
             const isActive = location.pathname === link.href;
-
             return (
               <Link
                 key={link.label}
@@ -59,16 +51,8 @@ const Navigation = () => {
         </div>
 
         <button
-<<<<<<< HEAD
-          onClick={() => {
-            console.log('Mobile menu toggled, current state:', mobileOpen);
-            setMobileOpen(!mobileOpen);
-          }}
-          className="relative z-[105] flex flex-col gap-1.5 p-2 md:hidden"
-=======
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-1.5 p-2 md:hidden"
->>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
+          className="relative z-[105] flex flex-col gap-1.5 p-2 md:hidden"
           aria-label="Toggle menu"
         >
           <motion.span
@@ -88,11 +72,9 @@ const Navigation = () => {
 
       <AnimatePresence>
         {mobileOpen && (
-<<<<<<< HEAD
           <>
             {createPortal(
               <>
-                {console.log('Mobile menu is open, rendering menu')}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -117,7 +99,6 @@ const Navigation = () => {
                   <div className="flex flex-col gap-2 p-6 min-h-full">
                     {siteNavigation.map((link, index) => {
                       const isActive = location.pathname === link.href;
-
                       return (
                         <motion.div
                           key={link.label}
@@ -129,8 +110,8 @@ const Navigation = () => {
                             to={link.href}
                             onClick={() => setMobileOpen(false)}
                             className={`block py-3 px-4 rounded-lg text-lg transition-all duration-300 ${
-                              isActive 
-                                ? "text-foreground bg-primary/20 border-l-4 border-primary shadow-sm" 
+                              isActive
+                                ? "text-foreground bg-primary/20 border-l-4 border-primary shadow-sm"
                                 : "text-muted-foreground hover:text-foreground hover:bg-background/60 hover:shadow-sm"
                             }`}
                           >
@@ -139,7 +120,7 @@ const Navigation = () => {
                         </motion.div>
                       );
                     })}
-                    
+
                     <motion.div
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -157,33 +138,6 @@ const Navigation = () => {
               document.body
             )}
           </>
-=======
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="glass-nav overflow-hidden md:hidden"
-          >
-            <div className="flex flex-col gap-4 p-6">
-              {siteNavigation.map((link) => {
-                const isActive = location.pathname === link.href;
-
-                return (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    className={`text-lg transition-colors ${
-                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.div>
->>>>>>> d3434ac688703c623a9865b0ac311f2dac12e938
         )}
       </AnimatePresence>
     </motion.nav>
