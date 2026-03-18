@@ -87,6 +87,8 @@ const LivestockSection = forwardRef<HTMLElement>((_, _forwardedRef) => {
       </div>
     </section>
   );
-};
+});
+
+LivestockSection.displayName = "LivestockSection";
 
 export default LivestockSection;

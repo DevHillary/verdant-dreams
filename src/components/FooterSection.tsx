@@ -46,6 +46,8 @@ const FooterSection = forwardRef<HTMLElement>((_, ref) => {
       </div>
     </footer>
   );
-};
+});
+
+FooterSection.displayName = "FooterSection";
 
 export default FooterSection;
