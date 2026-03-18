@@ -25,66 +25,76 @@ const PagePreloader = ({ onComplete }: PagePreloaderProps) => {
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.45 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background"
+          exit={{ opacity: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+          className="fixed inset-0 z-[120] flex items-center justify-center overflow-hidden bg-background"
+          aria-label="Loading Kigutu Farm"
         >
-          {/* Background with optimized image */}
-          <div className="absolute inset-0">
-            <img
-              src={preloaderFarmBg}
-              alt="Kigutu Farm landscape"
-              className="h-full w-full object-cover"
-              loading="eager"
-              decoding="async"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-          </div>
+          <motion.div
+            initial={prefersReducedMotion ? { scale: 1, x: 0, y: 0 } : { scale: 1.04, x: -12, y: 12 }}
+            animate={prefersReducedMotion ? { scale: 1, x: 0, y: 0 } : { scale: 1.14, x: 10, y: -10 }}
+            transition={prefersReducedMotion ? undefined : { duration: 3.4, ease: "easeInOut" }}
+            className="preloader-media absolute inset-0"
+            style={{ backgroundImage: `url(${preloaderFarmBg})` }}
+          />
+          <div className="preloader-aura absolute inset-0" />
+          <div className="preloader-grain absolute inset-0" />
 
-          {/* Content */}
-          <div className="relative z-10 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8"
+          <motion.div
+            initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.94, y: 18 }}
+            animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 px-6 text-center"
+          >
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.15, duration: 0.5 }}
+              className="text-label mb-5 text-primary"
             >
-              <h1 className="font-display text-4xl md:text-6xl text-foreground mb-4">
-                Kigutu
-                <span className="text-primary"> Farm</span>
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                Rooted in land, learning, and community
-              </p>
-            </motion.div>
+              Kigutu Farm
+            </motion.p>
 
-            {/* Loading indicator */}
+            <h1 className="text-display text-foreground text-4xl leading-none md:text-6xl">
+              <motion.span
+                initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="block"
+              >
+                Welcome to
+              </motion.span>
+              <motion.span
+                initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-2 block text-gradient-primary"
+              >
+                Kigutu Farm
+              </motion.span>
+            </h1>
+
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="mx-auto mt-8 h-px w-48 origin-center bg-gradient-to-r from-transparent via-primary to-transparent"
+            />
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex justify-center"
+              transition={{ delay: 0.95, duration: 0.5 }}
+              className="mt-6 flex items-center justify-center gap-2"
             >
-              <div className="flex space-x-2">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.8 + i * 0.1,
-                      repeat: prefersReducedMotion ? 0 : Infinity,
-                      repeatType: "reverse",
-                      repeatDelay: 0.2,
-                    }}
-                    className="w-3 h-3 rounded-full bg-primary"
-                  />
-                ))}
-              </div>
+              {[0, 1, 2].map((dot) => (
+                <span
+                  key={dot}
+                  className="preloader-dot block h-2 w-2 rounded-full bg-primary"
+                  style={{ animationDelay: `${dot * 0.18}s` }}
+                />
+              ))}
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

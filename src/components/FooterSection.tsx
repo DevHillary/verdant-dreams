@@ -29,8 +29,6 @@ const FooterSection = () => {
           <div>
             <p className="text-label mb-3 text-foreground">Contact</p>
             <div className="space-y-2.5 text-sm text-muted-foreground">
-              <p>8801 Shore Road 6 FE</p>
-              <p>Brooklyn, New York 11209</p>
               <p>Burundi, East Africa</p>
               <p>Regenerative farm & food forest</p>
               <Link to="/contact" className="inline-flex text-foreground transition-colors hover:text-primary">

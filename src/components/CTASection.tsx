@@ -10,14 +10,7 @@ const CTASection = () => {
     <section id="contact" ref={ref} className="relative min-h-[80vh] flex items-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img 
-          src={ctaImage} 
-          alt="Burundi highlands at sunset" 
-          className="w-full h-full object-cover" 
-          loading="lazy"
-          decoding="async"
-          sizes="100vw"
-        />
+        <img src={ctaImage} alt="Burundi highlands at sunset" className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-background/70 backdrop-blur-sm" />
       </div>
 
@@ -33,33 +26,23 @@ const CTASection = () => {
             <h2 className="text-display text-foreground text-3xl md:text-4xl mb-6">
               Grow with us
             </h2>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-muted-foreground mb-10 leading-relaxed">
               Whether you're an agricultural partner, donor, or simply curious about sustainable
               farming in East Africa — we'd love to connect. Visit Kigutu, explore our programs,
               or support the future of food.
             </p>
-            
-            {/* Contact Information */}
-            <div className="mb-8 space-y-2 text-sm text-muted-foreground">
-              <p className="font-medium text-foreground">Visit Us:</p>
-              <p>8801 Shore Road 6 FE</p>
-              <p>Brooklyn, New York 11209</p>
-              <p className="mt-3 font-medium text-foreground">Farm Location:</p>
-              <p>Burundi, East Africa</p>
-            </div>
-            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:info@kigutufarm.org"
+                href="#"
                 className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-medium text-sm transition-all duration-300 hover:brightness-110 hover:scale-105"
               >
-                Email Us
+                Explore Programs
               </a>
               <a
-                href="tel:+1-718-000-0000"
+                href="#"
                 className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-glass-border text-foreground font-medium text-sm transition-all duration-300 hover:bg-glass-hover"
               >
-                Call Us
+                Contact Us
               </a>
             </div>
           </motion.div>

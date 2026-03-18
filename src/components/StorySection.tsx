@@ -76,8 +76,6 @@ const StorySection = () => {
                 alt="Hands planting seedlings in rich Burundian soil"
                 className="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
-                decoding="async"
-                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 glass-card !p-6 !rounded-2xl">

@@ -94,7 +94,7 @@ const PlantingCatalogSection = () => {
               className="overflow-hidden rounded-[2rem] border border-glass-border bg-glass backdrop-blur-xl"
             >
               <div className="relative h-56 overflow-hidden">
-                <img src={category.image} alt={category.label} className="h-full w-full object-cover" loading="lazy" decoding="async" sizes="(max-width: 768px) 50vw, 25vw" />
+                <img src={category.image} alt={category.label} className="h-full w-full object-cover" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
                   <div>

@@ -50,7 +50,7 @@ const SustainabilitySection = () => {
   return (
     <section id="sustainability" ref={ref} className="relative px-6 py-32 md:px-16 md:py-48">
       <div className="absolute inset-0 opacity-10">
-        <img src={sustainImage} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" sizes="100vw" />
+        <img src={sustainImage} alt="" className="h-full w-full object-cover" loading="lazy" />
       </div>
 
       <div className="relative mx-auto max-w-7xl">

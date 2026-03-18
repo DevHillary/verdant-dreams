@@ -5,8 +5,6 @@ import gallerySeedlings from "@/assets/gallery-seedlings.jpg";
 import heroFarm from "@/assets/hero-farm.jpg";
 import storyPlanting from "@/assets/story-planting.jpg";
 import sustainability from "@/assets/sustainability.jpg";
-import herbs from "@/assets/herbs.jpg";
-import cabbage2 from "@/assets/cabbage2.jpg";
 
 export type PlantingCategory = {
   id: string;
@@ -153,7 +151,7 @@ export const plantingCatalog: PlantingCategory[] = [
     id: "herbs-flowers",
     label: "Herbs, Spices & Flowers",
     description: "Medicinal, aromatic, and pollinator-friendly plantings woven into the regenerative ecosystem.",
-    image: herbs,
+    image: farmMap,
     items: [
       "Ginger (tangawizi / gingembre)",
       "Spices (piripiri: mbuzi na ndundi)",
@@ -172,7 +170,7 @@ export const plantingCatalog: PlantingCategory[] = [
     id: "seed-varieties",
     label: "Named Seed Varieties & Trials",
     description: "Expanded cultivar trials and seed selections supporting learning, adaptation, and high-value production.",
-    image: cabbage2,
+    image: heroFarm,
     items: [
       "Cabbage Early Golden",
       "Cabbage Ferry’s Round",

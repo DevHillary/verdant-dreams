@@ -1,7 +1,5 @@
 import CTASection from "@/components/CTASection";
-import CommunityProvisionSection from "@/components/CommunityProvisionSection";
 import EcosystemSection from "@/components/EcosystemSection";
-import FishingSection from "@/components/FishingSection";
 import FooterSection from "@/components/FooterSection";
 import GallerySection from "@/components/GallerySection";
 import HeroSection from "@/components/HeroSection";
@@ -19,9 +17,7 @@ const Index = () => {
       <StorySection />
       <EcosystemSection />
       <LivestockSection />
-      <FishingSection />
       <SustainabilitySection />
-      <CommunityProvisionSection />
       <ImpactSection />
       <GallerySection />
       <CTASection />

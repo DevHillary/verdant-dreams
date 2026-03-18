@@ -28,8 +28,6 @@ const LivestockSection = () => {
               alt="Majestic Inyambo cattle on Kigutu Farm hillside"
               className="w-full h-[400px] md:h-[540px] object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
-              decoding="async"
-              sizes="(max-width: 768px) 100vw, 60vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">

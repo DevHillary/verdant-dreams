@@ -43,8 +43,6 @@ const HeroSection = () => {
           alt="Lush green farmland of Kigutu in the Burundi highlands at golden hour"
           className="w-full h-full object-cover will-change-transform"
           loading="eager"
-          decoding="async"
-          sizes="100vw"
         />
         <div className="atmospheric-overlay absolute inset-0" />
         <div className="fog-overlay absolute inset-0" />

@@ -70,8 +70,6 @@ const ImpactSection = () => {
               alt="Kigutu community farmers harvesting crops together"
               className="h-[500px] w-full object-cover transition-transform duration-700 hover:scale-105"
               loading="lazy"
-              decoding="async"
-              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </motion.div>
 
