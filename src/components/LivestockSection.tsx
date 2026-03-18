@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { forwardRef, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import inyamboCattle from "@/assets/inyambo-cattle.jpg";
 
