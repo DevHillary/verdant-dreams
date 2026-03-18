@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { forwardRef, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import inyamboCattle from "@/assets/inyambo-cattle.jpg";
 
@@ -8,7 +8,7 @@ const highlights = [
   { title: "Community Livelihood", desc: "Providing milk, organic fertilizer, and income — the Inyambo are central to food security and cultural pride at Kigutu." },
 ];
 
-const LivestockSection = () => {
+const LivestockSection = forwardRef<HTMLElement>((_, _forwardedRef) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -87,6 +87,8 @@ const LivestockSection = () => {
       </div>
     </section>
   );
-};
+});
+
+LivestockSection.displayName = "LivestockSection";
 
 export default LivestockSection;
